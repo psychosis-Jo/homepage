@@ -1,34 +1,40 @@
+/*=======================
+  CSS变量定义
+========================*/
 :root {
-    /* 基础颜色 */
-    --text-color: #ffffff;
-    --dark-text: #94a3b8;
+    /* 基础文本颜色 */
+    --text-color: #ffffff;      /* 主要文本颜色 */
+    --dark-text: #94a3b8;      /* 次要文本颜色 */
     
-    /* 主要颜色 */
-    --purple: #7928ca;
-    --orange: #f97316;
+    /* 主题颜色 */
+    --purple: #7928ca;         /* 紫色主题色 */
+    --orange: #f97316;         /* 橙色主题色 */
     
-    /* 渐变配置 */
+    /* 渐变色配置 */
     --header-gradient: linear-gradient(
         90deg,
-        #f97316,
-        #fb923c
+        #f97316,              /* 渐变起始色 */
+        #fb923c               /* 渐变结束色 */
     );
     
     --main-gradient: linear-gradient(
         180deg,
-        rgba(121, 40, 202, 0.9) 0%,
-        rgba(249, 115, 22, 0.9) 100%
+        rgba(121, 40, 202, 0.9) 0%,    /* 紫色渐变起始 */
+        rgba(249, 115, 22, 0.9) 100%    /* 橙色渐变结束 */
     );
 }
 
+/*=======================
+  全局重置和基础设置
+========================*/
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;  /* 使用更现代的盒模型 */
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth;  /* 启用平滑滚动 */
 }
 
 body {
@@ -38,60 +44,165 @@ body {
     background: var(--bg-gradient);
 }
 
-/* 导航栏样式 */
+/*=======================
+  导航栏样式
+========================*/
 .navbar {
-    position: fixed;
+    position: fixed;         /* 固定在顶部 */
     top: 0;
     width: 100%;
-    padding: 1rem 2rem;
+    height: 60px;           /* 固定导航栏高度 */
+    padding: 0.8rem 1.5rem;
     background: rgba(249, 115, 22, 0.9);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);  /* 毛玻璃效果 */
     border-bottom: 1px solid rgba(251, 146, 60, 0.3);
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 1000;          /* 确保导航栏在最上层 */
 }
 
+/* 品牌标志样式 */
 .nav-brand {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #ffffff;
-    text-shadow: 0 0 10px rgba(249, 115, 22, 0.8);
+    text-shadow: 0 0 10px rgba(249, 115, 22, 0.8);  /* 发光效果 */
 }
 
+/* 导航链接列表 */
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 2rem;             /* 现代的间距设置方式 */
 }
 
+/* 导航链接样式 */
 .nav-links a {
     text-decoration: none;
     color: var(--text-color);
-    transition: color 0.3s;
+    transition: color 0.3s;  /* 颜色过渡动画 */
 }
 
 .nav-links a:hover {
     color: #fed7aa;
-    text-shadow: 0 0 10px rgba(249, 115, 22, 0.8);
+    text-shadow: 0 0 10px rgba(249, 115, 22, 0.8);  /* 悬浮时的发光效果 */
 }
 
-/* 移除main相关样式 */
-/* 添加渐变背景包装器样式 */
+/*=======================
+  移动端菜单按钮
+========================*/
+.mobile-menu-toggle {
+    display: none;           /* 默认隐藏 */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+/* 汉堡按钮横条 */
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    transition: all 0.3s linear;  /* 动画过渡效果 */
+}
+
+/*=======================
+  响应式设计 - 移动端
+========================*/
+@media (max-width: 768px) {
+    /* 导航栏移动端调整 */
+    .navbar {
+        padding: 0 1rem;
+    }
+
+    /* 显示菜单按钮 */
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    /* 导航链接移动端样式 */
+    .nav-links {
+        position: fixed;
+        top: 60px;           /* 与导航栏高度对应 */
+        left: 0;
+        width: 100%;
+        background: rgba(249, 115, 22, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        transform: scaleY(0);     /* 初始状态：收起 */
+        transform-origin: top;
+        opacity: 0;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+
+    /* 菜单展开状态 */
+    .nav-links.active {
+        transform: scaleY(1);     /* 展开状态 */
+        opacity: 1;
+    }
+
+    /* 移动端菜单项样式 */
+    .nav-links li {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 50px;
+        display: flex;
+    }
+
+    /* 移动端链接样式 */
+    .nav-links a {
+        color: white;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        transition: background-color 0.3s;
+    }
+
+    /* 移动端链接悬浮效果 */
+    .nav-links a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* 菜单按钮动画效果 */
+    .mobile-menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);  /* 转换为关闭图标 */
+    }
+
+    .mobile-menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;                                    /* 中间横条隐藏 */
+    }
+
+    .mobile-menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px); /* 转换为关闭图标 */
+    }
+}
+
+/*=======================
+  主要内容区域
+========================*/
+/* 渐变背景包装器 */
 .gradient-wrapper {
-    background: linear-gradient(
-        180deg,
-        rgba(121, 40, 202, 0.9) 0%,
-        rgba(249, 115, 22, 0.9) 100%
-    );
+    background: var(--main-gradient);
     min-height: 100vh;
-    padding-top: 60px; /* 为固定导航栏留出空间 */
-    position: relative; /* 添加定位上下文 */
+    padding-top: 60px;     /* 为固定导航栏留出空间 */
+    position: relative;    /* 为子元素提供定位上下文 */
 }
 
-/* 移除各个section的背景 */
+/* 统一section样式 */
 .hero,
 .about,
 .carousel-section,
@@ -102,29 +213,31 @@ body {
     overflow: visible;
 }
 
-/* 首屏样式 */
+/* 首屏区域样式 */
 .hero {
-    min-height: 100vh;
-    padding: 6rem 2rem 2rem;
+    min-height: 100vh;        /* 确保至少占满一屏 */
+    padding: 6rem 2rem 2rem;  /* 顶部留出导航栏空间 */
     display: flex;
-    align-items: center;
+    align-items: center;      /* 垂直居中内容 */
 }
 
+/* 首屏内容容器 */
 .hero-content {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto;          /* 水平居中 */
     display: flex;
     align-items: center;
-    gap: 4rem;
+    gap: 4rem;              /* 内容间距 */
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);  /* 毛玻璃效果 */
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 2rem;
 }
 
+/* 文本区域 */
 .hero-text {
-    flex: 1;
+    flex: 1;               /* 自适应宽度 */
 }
 
 .hero-text h1 {
@@ -132,15 +245,18 @@ body {
     margin-bottom: 1rem;
 }
 
+/* 头像样式 */
 .profile-image {
     width: 300px;
     height: 300px;
-    border-radius: 50%;
+    border-radius: 50%;    /* 圆形头像 */
     background: url('img/head.jpg') center/cover;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);  /* 阴影效果 */
 }
 
-/* 关于我区域 */
+/*=======================
+  关于我区域样式
+========================*/
 .about-content {
     max-width: 800px;
     margin: 0 auto;
@@ -152,51 +268,56 @@ body {
     padding: 2rem;
 }
 
+/* 段落文本样式 */
 .about-content p {
     color: #ffffff;
     margin-bottom: 1rem;
-    text-shadow: 0 0 10px rgba(121, 40, 202, 0.3);
+    text-shadow: 0 0 10px rgba(121, 40, 202, 0.3);  /* 文字发光效果 */
 }
 
+/* 技能标签容器 */
 .skills {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;         /* 允许换行 */
     gap: 1rem;
     justify-content: center;
     margin-top: 2rem;
 }
 
+/* 技能标签样式 */
 .skill-tag {
     padding: 0.5rem 1rem;
     background: rgba(121, 40, 202, 0.2);
     border: 1px solid rgba(121, 40, 202, 0.3);
     backdrop-filter: blur(5px);
     color: #ffffff;
-    box-shadow: 0 0 15px rgba(121, 40, 202, 0.3);
+    box-shadow: 0 0 15px rgba(121, 40, 202, 0.3);  /* 发光效果 */
     border-radius: 20px;
     font-size: 0.9rem;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease;  /* 过渡动画 */
 }
 
+/* 技能标签悬浮效果 */
 .skill-tag:hover {
     background: rgba(121, 40, 202, 0.4);
-    box-shadow: 0 0 20px rgba(121, 40, 202, 0.5);
-    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(121, 40, 202, 0.5);  /* 增强发光效果 */
+    transform: translateY(-2px);                    /* 上浮效果 */
 }
 
-/* 作品集区域 */
+/*=======================
+  作品集区域样式
+========================*/
 .portfolio {
     position: relative;
     padding: 5rem 2rem;
 }
 
+/* 作品网格布局 */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  /* 响应式网格 */
     gap: 2rem;
     padding: 2rem;
-    position: relative;
-    z-index: 2;
 }
 
 .portfolio-item {
@@ -242,7 +363,7 @@ body {
 
 /* 返回顶部按钮 */
 #back-to-top {
-    position: fixed;
+    position: fixed;         /* 固定定位 */
     bottom: 20px;
     right: 20px;
     background: rgba(249, 115, 22, 0.8);
@@ -257,6 +378,7 @@ body {
     display: none;
     font-size: 1.2rem;
     transition: background-color 0.3s;
+    z-index: 2000;          /* 确保在最上层，比导航栏的1000更高 */
 }
 
 #back-to-top:hover {
@@ -269,10 +391,6 @@ body {
     .hero-content {
         flex-direction: column;
         text-align: center;
-    }
-
-    .nav-links {
-        display: none;
     }
 
     .profile-image {
@@ -496,4 +614,20 @@ footer p:hover {
     font-size: 1.2rem;
     margin-right: 0.5rem;
     vertical-align: middle;
+}
+
+nav {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    white-space: nowrap;
 } 

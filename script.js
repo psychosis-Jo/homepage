@@ -45,4 +45,29 @@ nextBtn.addEventListener('click', () => {
     const maxIndex = carousel.children.length - 1;
     currentIndex = Math.min(currentIndex + 1, maxIndex);
     updateCarousel();
+});
+
+// 移动端菜单切换
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+mobileMenuToggle.addEventListener('click', () => {
+    mobileMenuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!mobileMenuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        mobileMenuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+    }
+});
+
+// Close mobile menu when clicking a nav link
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
 }); 
