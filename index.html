@@ -4,132 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>方勿信</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="//at.alicdn.com/t/c/font_4444131_7mxe0ib0yc8.css">
 </head>
 <body>
-    <!-- 添加全局模糊效果层 -->
-    <div class="blur-overlay"></div>
     <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="nav-brand">方勿信</div>
-        <button class="mobile-menu-toggle">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
-        <ul class="nav-links">
-            <li><a href="#home">首页</a></li>
-            <li><a href="#about">关于我</a></li>
-            <li><a href="#portfolio">作品集</a></li>
-            <li><a href="https://blog.fangwuxin.com">博客</a></li>
-            <li><a href="#contact">联系方式</a></li>
-        </ul>
-    </nav>
-
-    <!-- 使用div包裹主要内容并应用渐变背景 -->
-    <div class="gradient-wrapper">
-        <!-- 首屏区域 -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>你好，我是<span class="highlight">方勿信</span></h1>
-                    <p>终身学习小趴菜/理想主义的赌徒/AI全栈工程师</p>
-                </div>
-                <div class="hero-image">
-                    <div class="profile-image"></div>
-                </div>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="nav-brand">方勿信</a>
+                <nav class="nav-right">
+                    <ul class="nav-links">
+                        <li><a href="#posts">Posts</a></li>
+                        <li><a href="https://blog.fangwuxin.com">Blogs</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                    <div class="icon-buttons">
+                        <button class="theme-toggle" id="theme-toggle" aria-label="切换主题">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                    </div>
+                    <button class="mobile-menu-toggle" aria-label="菜单">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </nav>
             </div>
-        </section>
+        </div>
+    </header>
 
-        <!-- 关于我 -->
-        <section id="about" class="about">
-            <h2>关于我</h2>
-            <div class="about-content">
-                <p>MBIT：INTJ</p>
-                <p>目前长期在广州，答案验证中。</p>
-                <p>先后专注于平面设计、系统运维、全栈开发、产品管理、副业起步咨询、AI应用这些领域</p>
-                <p>目前主要对两个话题感兴趣：</p>
-                <p>1. 人生系统的构建 2. AI创业</p>
-                <div class="skills">
-                    <span class="skill-tag">vue.js</span>
-                    <span class="skill-tag">Django</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">AI coding</span>
-                    <span class="skill-tag">Docker</span>
-                    <span class="skill-tag">K8s</span>
-                    <span class="skill-tag">DevOps</span>
-                    <span class="skill-tag">Aliyun</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- 作品轮播 -->
-        <section class="carousel-section">
-            <div class="carousel">
-                <div class="carousel-items">
-                    <img src="img/pic1.png" alt="作品1">
-                    <img src="img/king.png" alt="作品2">
-                    <img src="img/pic3.png" alt="作品3">
-                    <img src="img/pic2.png" alt="作品4">
-                </div>
-                <div class="carousel-controls">
-                    <button class="prev">←</button>
-                    <button class="next">→</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- 作品集 -->
-        <section id="portfolio" class="portfolio">
-            <h2>作品集</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="img/project_1.png" alt="项目1">
-                    <div class="portfolio-content">
-                        <h3>人生系统设计方案</h3>
-                        <p>系统性掌握人生系统的设计方法，解决"怎么过好这一生"的问题。</p>
-                        <p>- 参考《人生设计课》中的"爱乐工健"模型，将自己的人生系统划分为"爱、乐、工、健、生活、学习"6个版块；</p>
-                        <p>- 参考PARA方法和《卡片笔记写作法》，将自己的知识库划分为"自我管理、个人成长、工作事业、兴趣爱好、灵感记录和归档"6个板块，这是人生系统的输入系统。</p>
-                        <p>- 结合《卡片笔记写作法》，确定人生系统中的最小单位，以及从卡片到笔记到系统的结构流程。</p>
-                        <p>【人生系统】是【知识管理系统（个人知识库）】的一个分支，也是【知识管理系统】的上层，其细分与【知识管理系统】一一对应，因为【知识管理系统】的存在就是为了解决【人生系统】中出现的问题。</p>
-                        <p>同时，它以【知识管理系统】作为输入，是一个不断吸收和迭代的成长性系统，它将个人的成长变得具体、可视化、可量化，也使得成长路线更可控以及更有设计性。</p>
+    <!-- 内容区域 -->
+    <main class="site-content">
+        <div class="container">
+            <!-- 主页标题区域 -->
+            <section id="about" class="site-title">
+                <h1>方勿信的个人说明<a href="#" class="rss-link"><i class="fas fa-rss"></i></a></h1>
+                
+                <div class="site-description">
+                    <div class="profile-section">
+                        <div class="profile-info">
+                            <p class="about-me">
+                                终身学习小趴菜/理想主义的赌徒/AI全栈工程师
+                            </p>
+                            <div class="about-details">
+                                <p>MBIT：INTJ</p>
+                                <p>目前长期在广州，答案验证中。</p>
+                                <p>先后专注于平面设计、系统运维、全栈开发、产品管理、副业起步咨询、AI应用这些领域</p>
+                                <p>目前主要对两个话题感兴趣：1. 人生系统的构建 2. AI创业</p>
+                            </div>
+                            <div class="skills-section">
+                                <div class="skills">
+                                    <span class="skill-tag">vue.js</span>
+                                    <span class="skill-tag">Django</span>
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">AI coding</span>
+                                    <span class="skill-tag">Docker</span>
+                                    <span class="skill-tag">K8s</span>
+                                    <span class="skill-tag">DevOps</span>
+                                    <span class="skill-tag">Aliyun</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- 可以根据需要添加更多作品卡片 -->
-            </div>
-        </section>
+            </section>
 
-        <!-- 联系方式 -->
-        <section id="contact" class="contact">
-            <h2>联系我</h2>
-            <div class="social-links">
-                <a href="https://github.com/psychosis-Jo/" class="social-link" target="_blank">
-                    <i class="fab fa-github"></i>
-                    GitHub
-                </a>
-                <a href="https://space.bilibili.com/34475434" class="social-link" target="_blank">
-                    <svg class="bilibili-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="currentColor" d="M777.514667 131.669333a53.333333 53.333333 0 0 1 0 75.434667L728.746667 255.829333h49.92A160 160 0 0 1 938.666667 415.829333v320a160 160 0 0 1-160 160H245.333333A160 160 0 0 1 85.333333 735.829333v-320a160 160 0 0 1 160-160h49.749334L246.4 207.104a53.333333 53.333333 0 1 1 75.392-75.434667l113.152 113.152c3.370667 3.370667 6.186667 7.04 8.448 10.965334h137.088c2.261333-3.925333 5.12-7.594667 8.490667-10.965334l113.109333-113.152a53.333333 53.333333 0 0 1 75.434667 0z m1.152 234.666667H245.333333a53.333333 53.333333 0 0 0-53.333333 53.333333v320a53.333333 53.333333 0 0 0 53.333333 53.333334h533.333334a53.333333 53.333333 0 0 0 53.333333-53.333334v-320a53.333333 53.333333 0 0 0-53.333333-53.333333z m-426.666667 106.666667c29.44 0 53.333333 23.893333 53.333333 53.333333v53.333333a53.333333 53.333333 0 1 1-106.666666 0v-53.333333c0-29.44 23.893333-53.333333 53.333333-53.333333z m320 0c29.44 0 53.333333 23.893333 53.333333 53.333333v53.333333a53.333333 53.333333 0 1 1-106.666666 0v-53.333333c0-29.44 23.893333-53.333333 53.333333-53.333333z"/>
-                    </svg>
-                    Bilibili
-                </a>
-                <a href="mailto:834127296@qq.com" class="social-link">
-                    <i class="fas fa-envelope"></i>
-                    Email
-                </a>
-                <a href="https://www.linkedin.com/in/your-profile" class="social-link" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                    LinkedIn
-                </a>
-            </div>
-        </section>
-    </div>
+            <!-- 最近文章区域 -->
+            <section id="posts" class="recent-posts">
+                <h2>Recent Posts</h2>
+                <div class="notes-list">
+                    <div class="note-item">
+                        <h3>
+                            <a href="notes/01.html">这些潜意识行为,在阻止你获得你想要的生活</a>
+                        </h3>
+                        <div class="post-meta">
+                            <time datetime="2025-03-06">2025/03/06 15:00</time>
+                        </div>
+                        <div class="note-preview">
+                            <p>该文章探讨了阻碍个人发展的潜意识行为模式，以及如何识别和改变这些模式来实现理想生活。</p>
+                        </div>
+                    </div>
+                    <!-- 可以在此添加更多文章 -->
+                </div>
+                <div class="view-all">
+                    <a href="#" class="view-all-link">All Posts <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </section>
+        </div>
+    </main>
 
     <!-- 页脚 -->
-    <footer>
-        <p>&copy; 2025 方勿信. All rights reserved.</p>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="social-links footer-social">
+                    <a href="https://github.com/psychosis-Jo/" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:834127296@qq.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="#" class="social-link" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://space.bilibili.com/34475434" class="social-link" target="_blank">
+                        <svg class="bilibili-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="currentColor" d="M777.514667 131.669333a53.333333 53.333333 0 0 1 0 75.434667L728.746667 255.829333h49.92A160 160 0 0 1 938.666667 415.829333v320a160 160 0 0 1-160 160H245.333333A160 160 0 0 1 85.333333 735.829333v-320a160 160 0 0 1 160-160h49.749334L246.4 207.104a53.333333 53.333333 0 1 1 75.392-75.434667l113.152 113.152c3.370667 3.370667 6.186667 7.04 8.448 10.965334h137.088c2.261333-3.925333 5.12-7.594667 8.490667-10.965334l113.109333-113.152a53.333333 53.333333 0 0 1 75.434667 0z m1.152 234.666667H245.333333a53.333333 53.333333 0 0 0-53.333333 53.333333v320a53.333333 53.333333 0 0 0 53.333333 53.333334h533.333334a53.333333 53.333333 0 0 0 53.333333-53.333334v-320a53.333333 53.333333 0 0 0-53.333333-53.333333z m-426.666667 106.666667c29.44 0 53.333333 23.893333 53.333333 53.333333v53.333333a53.333333 53.333333 0 1 1-106.666666 0v-53.333333c0-29.44 23.893333-53.333333 53.333333-53.333333z m320 0c29.44 0 53.333333 23.893333 53.333333 53.333333v53.333333a53.333333 53.333333 0 1 1-106.666666 0v-53.333333c0-29.44 23.893333-53.333333 53.333333-53.333333z"/>
+                        </svg>
+                    </a>
+                </div>
+                <p>&copy; 2025 方勿信 | All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
     <!-- 返回顶部按钮 -->
