@@ -319,14 +319,22 @@
         }
 
         .note-area {
-            background: #f9f9f9;
+            margin-top: 30px;
             padding: 20px;
-            border-radius: var(--card-radius);
-            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            border-left: 4px solid var(--color-secondary);
             font-style: italic;
             color: #666;
-            margin-top: 30px;
-            border: 1px dashed #ccc;
+        }
+
+        .source-attribution {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-style: italic;
+            text-align: right;
         }
 
         @media (max-width: 768px) {
@@ -607,6 +615,10 @@
 
         <div class="note-area">
             你的哪些"真理"可能只是被灌输的社会观念？在此处记下你的思考...
+        </div>
+
+        <div class="source-attribution">
+            <p>内容来源：布里安娜·威斯特《改变你想法的101篇文章》</p>
         </div>
     </div>
 </body>
