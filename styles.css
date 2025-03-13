@@ -322,40 +322,41 @@ a:hover {
 }
 
 .note-item {
-    margin-bottom: var(--spacing-lg);
     padding-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
     border-bottom: 1px solid var(--border-color);
 }
 
 .note-item:last-child {
     border-bottom: none;
+    margin-bottom: 0;
 }
 
 .note-item h3 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: var(--spacing-sm);
 }
 
 .note-item h3 a {
     color: var(--text-color);
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .note-item h3 a:hover {
     color: var(--accent-color);
 }
 
+.note-preview {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
 .post-meta {
     font-size: 0.85rem;
     color: var(--text-muted);
     margin-bottom: var(--spacing-sm);
-}
-
-.note-preview p {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.6;
 }
 
 .view-all {
@@ -542,12 +543,8 @@ a:hover {
 /* 文章分类标签 */
 .note-category {
     display: inline-block;
-    padding: 2px 8px;
-    background-color: transparent;
-    border: 1px solid var(--accent-color);
+    font-size: 0.85rem;
     color: var(--accent-color);
-    font-size: 0.75rem;
-    border-radius: 3px;
     margin-bottom: var(--spacing-sm);
     font-weight: 500;
     letter-spacing: 0.5px;

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>持续有影响力的IP - 视觉笔记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background: #f8f9fa;
+            color: #2d3436;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .visual-note {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .mindmap-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .central-topic {
+            text-align: center;
+            background: linear-gradient(135deg, #0984e3, #00a8ff);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 16px;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(9, 132, 227, 0.2);
+            position: relative;
+            z-index: 2;
+            min-width: 300px;
+        }
+
+        .subtopics-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: relative;
+            margin-top: 0;
+            gap: 30px;
+        }
+
+        .subtopic {
+            flex: 1;
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 1;
+            min-width: 220px;
+        }
+
+        /* 连接线样式 */
+        .mindmap-container::after {
+            display: none;  /* 移除竖向连接线 */
+        }
+
+        .subtopics-container::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: #636e72;
+        }
+
+        .subtopic::before {
+            display: none;  /* 移除竖向连接线 */
+        }
+
+        .subtopic-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .subtopic-icon {
+            font-size: 1.8em;
+            width: 45px;
+            height: 45px;
+            background: rgba(9, 132, 227, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .subtopic-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2d3436;
+        }
+
+        .subtopic-content {
+            color: #636e72;
+        }
+
+        .sub-points {
+            margin-top: 12px;
+            padding-left: 15px;
+        }
+
+        .highlight {
+            background: rgba(9, 132, 227, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #0984e3;
+            font-weight: 500;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.4em;
+            color: #2d3436;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .detail-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .detail-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            color: #636e72;
+        }
+
+        .detail-list li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #0984e3;
+            font-weight: bold;
+        }
+
+        .detail-list strong {
+            color: #2d3436;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .source-attribution {
+            text-align: center;
+            color: #636e72;
+            font-size: 0.9em;
+            margin-bottom: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .mindmap-container {
+                gap: 30px;
+            }
+
+            .central-topic {
+                padding: 15px 30px;
+                font-size: 1.2em;
+                width: 90%;
+                min-width: auto;
+            }
+
+            .subtopics-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .subtopic {
+                margin: 0;
+                width: 100%;
+                min-width: auto;
+            }
+
+            /* 移动端连接线样式 */
+            .subtopics-container::before {
+                display: none;  /* 移动端不显示横向连接线 */
+            }
+
+            .subtopic-header {
+                gap: 10px;
+            }
+
+            .subtopic-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.6em;
+            }
+
+            .subtopic-title {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-container">
+            <div class="visual-note">
+                <div class="mindmap-container">
+                    <div class="central-topic">
+                        持续有影响力的IP
+                    </div>
+                    <div class="subtopics-container">
+                        <div class="subtopic">
+                            <div class="subtopic-header">
+                                <div class="subtopic-icon">🔄</div>
+                                <div class="subtopic-title">持续输出</div>
+                            </div>
+                            <div class="subtopic-content">
+                                <p>通过持续输出保持影响力</p>
+                                <ul class="sub-points">
+                                    <li><span class="highlight">作品</span> - 重磅创作</li>
+                                    <li><span class="highlight">内容</span> - 专业知识</li>
+                                    <li><span class="highlight">事件</span> - 话题传播</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="subtopic">
+                            <div class="subtopic-header">
+                                <div class="subtopic-icon">✨</div>
+                                <div class="subtopic-title">人性光辉</div>
+                            </div>
+                            <div class="subtopic-content">
+                                <p>展现人格魅力三层次</p>
+                                <ul class="sub-points">
+                                    <li><span class="highlight">颜值</span> - 吸引注意</li>
+                                    <li><span class="highlight">才华</span> - 展示能力</li>
+                                    <li><span class="highlight">人品</span> - 价值认同</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="subtopic">
+                            <div class="subtopic-header">
+                                <div class="subtopic-icon">📖</div>
+                                <div class="subtopic-title">好故事</div>
+                            </div>
+                            <div class="subtopic-content">
+                                <p>积累个人特色故事</p>
+                                <ul class="sub-points">
+                                    <li><span class="highlight">记录</span> - 及时保存</li>
+                                    <li><span class="highlight">创造</span> - 主动制造</li>
+                                    <li><span class="highlight">积累</span> - 长期沉淀</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span>📝</span>
+                    持续输出的三个维度
+                </div>
+                <ul class="detail-list">
+                    <li>
+                        <strong>作品输出</strong>
+                        每隔一定时间推出重磅作品，如作家的新书、导演的纪录片、演讲者的重要演讲等
+                    </li>
+                    <li>
+                        <strong>内容输出</strong>
+                        持续输出专业领域的知识内容，建立知识IP，保持稳定的分享频率
+                    </li>
+                    <li>
+                        <strong>事件输出</strong>
+                        创造或把握能引发大众传播、媒体报道、行业讨论的事件，主动或被动地保持话题度
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span>💫</span>
+                    人性光辉的展现
+                </div>
+                <ul class="detail-list">
+                    <li>
+                        <strong>始于颜值</strong>
+                        通过独特的亮点吸引初始关注，可以是外表、特别的经历或者独特的行为方式
+                    </li>
+                    <li>
+                        <strong>陷于才华</strong>
+                        展示多元化的能力和技能，让关注者发现更多"宝藏"特质
+                    </li>
+                    <li>
+                        <strong>忠于人品</strong>
+                        展现优秀的品质和人性光辉，建立长期的认可和信任
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span>📚</span>
+                    故事积累的方法
+                </div>
+                <ul class="detail-list">
+                    <li>
+                        <strong>及时记录</strong>
+                        遇到特别经历时及时记录，"出了问题先别慌，拿出手机拍个照"
+                    </li>
+                    <li>
+                        <strong>主动创造</strong>
+                        通过刻意设计和行动创造好故事，如21天挑战计划等
+                    </li>
+                    <li>
+                        <strong>转化困境</strong>
+                        将遇到的困难和挑战转化为激励人心的故事
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span>🌱</span>
+                    持续积累的原则
+                </div>
+                <ul class="detail-list">
+                    <li>
+                        <strong>长期主义</strong>
+                        避免短视行为，不过度消耗用户信任和关注度
+                    </li>
+                    <li>
+                        <strong>价值积累</strong>
+                        聚集正向能量：信任而非诱惑，尊重而非奉承，佩服而非屈从
+                    </li>
+                    <li>
+                        <strong>平衡发展</strong>
+                        在商业变现和长期价值之间找到平衡点
+                    </li>
+                </ul>
+            </div>
+
+            <div class="source-attribution">
+                <p>内容来源：粥左罗《打造个人IP》</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
