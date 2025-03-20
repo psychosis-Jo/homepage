@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位前要做哪些自我梳理</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2C6E49;
+            --primary-light: rgba(44, 110, 73, 0.1);
+            --title-color: #1D5837;
+            --text-primary: #222222;
+            --text-secondary: #444444;
+            --bg-color: #FBFEFB;
+            --card-bg: #f5f5f5;
+            --hover-color: #3a8a5f;
+            --border-color: #e0e0e0;
+            --shadow-light: 0 8px 16px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 15px 30px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* 标题区域 */
+        .header {
+            background: var(--primary-light);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            margin-bottom: 40px;
+        }
+
+        .header:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-5px);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: var(--title-color);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .header h1::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 100%;
+            height: 3px;
+            background: var(--title-color);
+        }
+
+        .header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        /* 章节标题 */
+        .section-header {
+            margin: 40px 0 25px;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 1.8em;
+            color: var(--title-color);
+            display: inline-block;
+            margin: 0;
+            padding: 0 15px;
+            background: var(--bg-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border-color);
+            z-index: 0;
+        }
+
+        /* 介绍区域 */
+        .intro-section {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-light);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .intro-title {
+            font-size: 1.3em;
+            color: var(--title-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            color: var(--text-secondary);
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        /* 核心概念区域 */
+        .core-concept {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .core-circle {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .circle-outer {
+            width: 300px;
+            height: 300px;
+            background: rgba(44, 110, 73, 0.2);
+            z-index: 1;
+        }
+
+        .circle-middle {
+            width: 220px;
+            height: 220px;
+            background: rgba(44, 110, 73, 0.4);
+            z-index: 2;
+        }
+
+        .circle-inner {
+            width: 140px;
+            height: 140px;
+            background: rgba(44, 110, 73, 0.7);
+            z-index: 3;
+        }
+
+        .circle-text {
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .circle-icon {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+
+        /* 山形隐喻 */
+        .mountain-metaphor {
+            background: var(--primary-light);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mountain-metaphor h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--title-color);
+        }
+
+        .mountain {
+            display: flex;
+            align-items: flex-end;
+            height: 220px;
+            position: relative;
+        }
+
+        .mountain-path {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .mountain-step {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .mountain-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mountain-text {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mountain-step-1 {
+            left: 15%;
+            bottom: 30px;
+        }
+
+        .mountain-step-2 {
+            left: 50%;
+            bottom: 90px;
+            transform: translateX(-50%);
+        }
+
+        .mountain-step-3 {
+            right: 15%;
+            bottom: 150px;
+        }
+
+        /* 概念描述 */
+        .concept-descriptions {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .concept-description {
+            background: white;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 10px 0;
+            box-shadow: var(--shadow-light);
+            text-align: left;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .concept-description:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-3px);
+        }
+
+        .concept-description h4 {
+            color: var(--title-color);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .step-icon {
+            color: var(--primary-color);
+        }
+        
+        /* 探索卡片 */
+        .exploration-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .exploration-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .exploration-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .exploration-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 0;
+        }
+
+        .exploration-icon {
+            font-size: 2.2em;
+            color: white;
+            background: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .exploration-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: var(--title-color);
+        }
+
+        .exploration-content {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+            line-height: 1.6;
+            padding-left: 65px;
+        }
+
+        .exploration-details {
+            margin-top: 0;
+            padding-top: 20px;
+            border-top: 1px dashed var(--border-color);
+            padding-left: 65px;
+        }
+
+        .exploration-details h4 {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--title-color);
+        }
+        
+        /* 连接器 */
+        .connector {
+            height: 40px;
+            width: 2px;
+            background: var(--primary-color);
+            margin-left: 24px;
+            opacity: 0.5;
+        }
+
+        /* 维度网格 */
+        .four-dimensions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .dimension-item {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .dimension-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .dimension-icon {
+            font-size: 2em;
+            color: var(--primary-color);
+        }
+
+        .dimension-name {
+            font-weight: 600;
+            color: var(--title-color);
+        }
+
+        /* 步骤和列表 */
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+
+        .sub-title {
+            font-size: 1.2em;
+            color: var(--primary-color);
+            margin-top: 15px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .exploration-steps {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-left: 65px;
+        }
+
+        .exploration-steps li {
+            position: relative;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+        }
+
+        .list-items {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+
+        .list-items li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .list-items li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .layer-title {
+            position: relative;
+            padding: 8px 0 8px 20px;
+            font-weight: 600;
+            margin: 15px 0 10px;
+            color: var(--title-color);
+        }
+
+        .layer-title:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+
+        .highlighted-text {
+            background: var(--primary-light);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* 核心思想 */
+        .key-insight {
+            background: var(--primary-light);
+            border-left: 3px solid var(--primary-color);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            font-style: italic;
+            color: var(--primary-color);
+        }
+
+        /* 实践工具容器 */
+        .checklist-container {
+            margin-top: 30px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+            overflow: hidden;
+            border-left: 5px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .checklist-container:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-5px);
+        }
+
+        .checklist-header {
+            padding: 15px 20px;
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checklist-body {
+            padding: 20px;
+        }
+
+        .checklist-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .checklist-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .checklist-question {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--title-color);
+        }
+
+        .checklist-help {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .source-attribution {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin: 30px 0;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            .header {
+                margin-bottom: 30px;
+            }
+
+            .exploration-card {
+                padding: 20px;
+            }
+
+            .exploration-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.8em;
+            }
+
+            .exploration-content, 
+            .exploration-details,
+            .exploration-steps {
+                padding-left: 55px;
+            }
+
+            .four-dimensions {
+                grid-template-columns: 1fr;
+            }
+
+            .mountain {
+                height: 300px;
+            }
+
+            .mountain-step-1 {
+                left: 10%;
+                bottom: 50px;
+            }
+
+            .mountain-step-2 {
+                bottom: 130px;
+            }
+
+            .mountain-step-3 {
+                right: 10%;
+                bottom: 210px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2.2em;
+            }
+
+            .header .subtitle {
+                font-size: 1.1em;
+            }
+
+            .exploration-title {
+                font-size: 1.3em;
+            }
+
+            .exploration-card {
+                padding: 15px;
+            }
+
+            .exploration-content, 
+            .exploration-details,
+            .exploration-steps {
+                padding-left: 45px;
+            }
+
+            .core-circle {
+                width: 220px;
+                height: 220px;
+            }
+
+            .circle-outer {
+                width: 220px;
+                height: 220px;
+            }
+
+            .circle-middle {
+                width: 160px;
+                height: 160px;
+            }
+
+            .circle-inner {
+                width: 100px;
+                height: 100px;
+            }
+
+            .circle-text {
+                font-size: 0.9em;
+            }
+
+            .circle-icon {
+                font-size: 1.3em;
+                margin-bottom: 5px;
+            }
+
+            .exploration-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1.5em;
+            }
+
+            .mountain-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2em;
+            }
+
+            .mountain-text {
+                padding: 5px 10px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-wrapper">
+            <!-- 标题区域 -->
+            <header class="header">
+                <h1>定位前要做哪些自我梳理</h1>
+                <div class="subtitle">认识、接纳与放大自己</div>
+            </header>
+
+            <!-- 介绍部分 -->
+            <div class="intro-section">
+                <div class="intro-title">为什么要做自我梳理？</div>
+                <div class="intro-text">
+                    一切都源于你是谁，而不是去复制别人。有太多人想成为别人，极少数人想做好自己，但恰恰是那些能够做好自己的人，最终成功了。
+                </div>
+                <div class="intro-text">
+                    认识自己、接纳自己、放大自己，这是我们存在于这个社会上能够获取回报的有效方式。这是最重要的、最核心的道理，把它悟透了，也许可以离成功更近一点。
+                </div>
+                
+                <!-- 核心概念 -->
+                <div class="core-concept">
+                    <div class="core-circle">
+                        <div class="circle circle-outer">
+                            <div class="circle-text">
+                                <div class="circle-icon">🔍</div>
+                                认识自己
+                            </div>
+                        </div>
+                        <div class="circle circle-middle">
+                            <div class="circle-text">
+                                <div class="circle-icon">🤝</div>
+                                接纳自己
+                            </div>
+                        </div>
+                        <div class="circle circle-inner">
+                            <div class="circle-text">
+                                <div class="circle-icon">📈</div>
+                                放大自己
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 山峰隐喻 -->
+            <div class="mountain-metaphor">
+                <h3>自我梳理的三部曲</h3>
+                <div class="mountain">
+                    <svg class="mountain-path" viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 山形背景 -->
+                        <path d="M0,220 L250,100 L400,160 L600,50 L800,220 Z" fill="#e6f2ed" />
+                        <!-- 路径 -->
+                        <path d="M100,220 Q250,100 400,160 Q550,80 700,220" stroke="#2C6E49" stroke-width="3" fill="none" stroke-dasharray="5,5" />
+                    </svg>
+                    <div class="mountain-step mountain-step-1">
+                        <div class="mountain-icon">🔍</div>
+                        <div class="mountain-text">认识自己</div>
+                    </div>
+                    <div class="mountain-step mountain-step-2">
+                        <div class="mountain-icon">🤝</div>
+                        <div class="mountain-text">接纳自己</div>
+                    </div>
+                    <div class="mountain-step mountain-step-3">
+                        <div class="mountain-icon">📈</div>
+                        <div class="mountain-text">放大自己</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 三部曲详细描述 -->
+            <div class="concept-descriptions">
+                <div class="concept-description">
+                    <h4><span class="step-icon">🔍</span> 认识自己</h4>
+                    <p>我到底是谁？我的性格、特质如何？我的人格类型是什么？在职场中我可能成为什么样的人？</p>
+                </div>
+                <div class="concept-description">
+                    <h4><span class="step-icon">🤝</span> 接纳自己</h4>
+                    <p>不羡慕他人生命状态，承认每种生命状态都有价值。每个人都有不同特质，学会接纳自己的独特性。</p>
+                </div>
+                <div class="concept-description">
+                    <h4><span class="step-icon">📈</span> 放大自己</h4>
+                    <p>发掘自己的优势或潜在优势，然后勇敢地放大它。每个人都只能靠自己的优势成功。</p>
+                </div>
+            </div>
+
+            <!-- 主要内容部分 -->
+            <div class="main-content">
+                <!-- 章节标题 -->
+                <div class="section-header">
+                    <h2>从哪些方面做自我梳理？</h2>
+                </div>
+
+                <!-- 探索卡片容器 -->
+                <div class="exploration-container">
+                    <!-- 职业成就卡片 -->
+                    <div class="exploration-card">
+                        <div class="exploration-header">
+                            <div class="exploration-icon">🏆</div>
+                            <div class="exploration-title">梳理职业成就和能力优势</div>
+                        </div>
+                        <div class="exploration-content">
+                            <p>梳理职业成就是从"事件"的角度去罗列，梳理能力优势是从"能力"的角度去罗列，二者最好是相辅相成的。</p>
+                            <div class="key-insight">
+                                作为一个个体，你如何在这个社会上安身立命，取决于你能给别人带来什么。我们通过给别人提供价值，来换取自己想要的东西。
+                            </div>
+                        </div>
+                        <div class="exploration-details">
+                            <h4>梳理要求 - 四维检查表</h4>
+                            <div class="four-dimensions">
+                                <div class="dimension-item">
+                                    <div class="dimension-icon">📌</div>
+                                    <div class="dimension-name">具体</div>
+                                    <p>尽可能详细地描述具体事件和情境</p>
+                                </div>
+                                <div class="dimension-item">
+                                    <div class="dimension-icon">📋</div>
+                                    <div class="dimension-name">详细</div>
+                                    <p>包含环境、过程、结果等完整信息</p>
+                                </div>
+                                <div class="dimension-item">
+                                    <div class="dimension-icon">📊</div>
+                                    <div class="dimension-name">准确</div>
+                                    <p>使用数据、事实、客观描述</p>
+                                </div>
+                                <div class="dimension-item">
+                                    <div class="dimension-icon">📝</div>
+                                    <div class="dimension-name">证据</div>
+                                    <p>提供能力的具体证明和代表性事件</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="sub-title">
+                            <span class="step-icon">📋</span> 梳理步骤
+                        </div>
+                        
+                        <ul class="exploration-steps">
+                            <li><span class="step-number">1</span> 列出显而易见的事件和能力 - 这可能是你最容易成功的方向</li>
+                            <li><span class="step-number">2</span> 按照期望去刻意挖掘 - 寻找潜在优势</li>
+                            <li><span class="step-number">3</span> 在你有优势的事情上深耕，而非盲目转向新领域</li>
+                        </ul>
+                        
+                        <div class="exploration-details" style="border-top: 1px dashed var(--border-color); margin-top: 20px;">
+                            <h4>注意事项</h4>
+                            <div class="key-insight">
+                                在一件事情上达到行业顶尖水平才算优势？不是的！在10个人中成为前5名就已经是优势，不要妄自菲薄。
+                            </div>
+                            <p style="margin-top: 15px;">我们在发展一项能力时，可以有很多种发展方式。比如你以前从事销售类工作，以后可以：</p>
+                            <ul class="list-items">
+                                <li>教别人做销售</li>
+                                <li>出销售相关的课程</li>
+                                <li>写销售主题的图书</li>
+                            </ul>
+                            <p style="margin-top: 10px;">方式和形式虽然大有不同，但归根结底没有脱离你擅长的那件事本身。</p>
+                        </div>
+                    </div>
+
+                    <div class="connector"></div>
+
+                    <!-- 兴趣爱好卡片 -->
+                    <div class="exploration-card">
+                        <div class="exploration-header">
+                            <div class="exploration-icon">⏰</div>
+                            <div class="exploration-title">梳理长期投入的兴趣爱好</div>
+                        </div>
+                        <div class="exploration-content">
+                            <p>梳理那些你长期投入时间精力的兴趣爱好，它们有可能发展成事业。注意：我们要梳理的不是"希望"、不是"计划"，而是过去已经<span class="highlighted-text">真实发生的事实</span>。</p>
+                        </div>
+                        <div class="exploration-details">
+                            <h4>关键原则</h4>
+                            <p><strong>你不厌其烦去做的事，就是你的天分所在。</strong>很可能你的"使命"，你的优势，你用尽一生去追寻的事，就藏在这些事情里。</p>
+                            
+                            <div class="layer-title">拓展思考</div>
+                            <ul class="list-items">
+                                <li>你做什么事的时候最快乐？</li>
+                                <li>你做什么事的时候是与众不同的？</li>
+                                <li>你做什么事的时候感觉活出了最好的自我？</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="sub-title">
+                            <span class="step-icon">📋</span> 梳理步骤
+                        </div>
+                        
+                        <ul class="exploration-steps">
+                            <li><span class="step-number">1</span> 回顾过去已经投入大量时间的活动</li>
+                            <li><span class="step-number">2</span> 分析这些活动带给你的价值和满足感</li>
+                            <li><span class="step-number">3</span> 思考如何将这些兴趣与职业发展结合</li>
+                        </ul>
+                    </div>
+
+                    <div class="connector"></div>
+
+                    <!-- 先天优势卡片 -->
+                    <div class="exploration-card">
+                        <div class="exploration-header">
+                            <div class="exploration-icon">🌟</div>
+                            <div class="exploration-title">梳理各个维度的先天优势</div>
+                        </div>
+                        <div class="exploration-content">
+                            <p>每个人都有自己的先天优势，有的人只是自己认为自己没有。每个优势都可以放大，放大后都有它的价值。</p>
+                        </div>
+                        <div class="exploration-details">
+                            <div class="layer-title">先天优势分类</div>
+                            <ul class="list-items">
+                                <li><strong>显性先天优势：</strong>外貌、颜值、气质、身材等</li>
+                                <li><strong>隐性先天优势：</strong>社交能力、表达能力、创造性思维等</li>
+                            </ul>
+                            <p>如果你真正尊重自己、认可自己、欣赏自己，一定能罗列出许多自己的先天优势。</p>
+                        </div>
+                        
+                        <div class="sub-title">
+                            <span class="step-icon">📋</span> 梳理步骤
+                        </div>
+                        
+                        <ul class="exploration-steps">
+                            <li><span class="step-number">1</span> 客观评估自己的显性优势</li>
+                            <li><span class="step-number">2</span> 通过他人反馈发现隐性优势</li>
+                            <li><span class="step-number">3</span> 思考如何将优势转化为职业资源</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 实践工具 -->
+                <div class="section-header">
+                    <h2>自我梳理实践工具</h2>
+                </div>
+
+                <div class="checklist-container">
+                    <div class="checklist-header">
+                        <span>✅</span> 自我梳理必问问题
+                    </div>
+                    <div class="checklist-body">
+                        <div class="checklist-item">
+                            <div class="checklist-question">1. 我在职业上有哪些值得讲述的成就事件？</div>
+                            <div class="checklist-help">列出3-5个具体、详细、准确的职业成就事件，并为每一项提供证据。</div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checklist-question">2. 我在哪些技能上有优势？</div>
+                            <div class="checklist-help">思考你在哪些方面比周围人做得更好，以及能够提供的具体例子。</div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checklist-question">3. 我有哪些长期投入时间精力的兴趣爱好？</div>
+                            <div class="checklist-help">回顾过去几年中，你持续投入时间的活动，而非短暂的爱好。</div>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checklist-question">4. 我自己身上有哪些先天优势？</div>
+                            <div class="checklist-help">列出你的显性和隐性优势，可以请信任的朋友帮助你发现盲点。</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 底部署名 -->
+                <div class="source-attribution">
+                    <p>内容来源：粥左罗《打造个人IP》</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
